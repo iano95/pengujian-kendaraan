@@ -15,7 +15,7 @@
           <table class="table table-bordered table-striped" id="table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
             <thead>
               <tr>
-							<th>No Pendaftaran</th>
+							<th>No - Pemilik</th>
 							<th>No Mesin</th>
 							<th>No Rangka</th>
 							<th>Mrk Kendaraan</th>

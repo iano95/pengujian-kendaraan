@@ -55,8 +55,8 @@
 					</div>
 
 					<div class="form-group">
-					<label>Ban</label>
-						<input type="text" class="form-control form-control-sm" name="ban" id="ban" value="<?=$ban?>" />
+					<label>Ukuran Ban</label>
+						<input type="number" class="form-control form-control-sm" name="ban" id="ban" value="<?=$ban?>" />
 					</div>
 
 					<div class="form-group">

@@ -20,6 +20,8 @@ class Pengujian extends Backend{
      );
     parent::__construct($config);
     $this->load->model("Pengujian_model","model");
+    
+    $this->load->model("pemohon_model","pemohon");
   }
 
   function _rules()
@@ -47,37 +49,55 @@ class Pengujian extends Backend{
 
   function json()
   {
-    if ($this->input->is_ajax_request()) {
+   
+    $no=null;
+    if (profile('group')=='pemohon') {
+      $no=$this->pemohon->getAll(profile('email'))[0]->no_pendaftaran;
+  
+    }
     if (!$this->is_allowed('pengujian_list',false)) {
       return $this->response([
       'is_allowed' => 'sorry you do not have permission to access'
       ]);
     }
-      $rows = $this->model->get_datatables();
+      $rows = $this->model->get_datatables($no);
       $data = array();
       foreach ($rows as $get) {
-          $pem=$this->db->get_where('tb_kendaraan',['id_kendaraan'=>$get->no_kendaraan])->row();
+          $pem=$this->db->get_where('tb_kendaraan',['id_kendaraan'=>"$get->no_kendaraan"])->row();
 
-          $nmpem=$this->db->get_where('tb_pemohon',['no_pendaftaran'=>$pem->no_pendaftaran])->row();
+          $nmpem=$this->db->get_where('tb_pemohon',['no_pendaftaran'=>"$pem->no_pendaftaran"])->row();
           $row = array();
 					$row[] = $get->no_pemeriksaan;
 					$row[] = $get->tgl_pemeriksaan;
 					$row[] = $get->no_kendaraan." ($pem->mrk_kendaraan)";
           $row[] = $nmpem->nama_pemilik;
-          $row[] = '
+          if (!$this->is_allowed('pengujian_add',false)) {
+            $row[] = '
                       <div class="btn-group" role="group" aria-label="Basic example">
                           <a href="'.site_url("backend/pengujian/detail/".enc_url($get->id)).'" id="detail" class="btn btn-primary" title="'.cclang("detail").'">
                             <i class="ti-file"></i>
                           </a>
-                          <a href="'.site_url("backend/pengujian/update/".enc_url($get->id)).'" id="update" class="btn btn-warning" title="'.cclang("upadte").'">
-                            <i class="ti-pencil"></i>
-                          </a>
-                          <a href="'.site_url("backend/pengujian/delete/".enc_url($get->id)).'" id="delete" class="btn btn-danger" title="'.cclang("delete").'">
-                            <i class="ti-trash"></i>
-                          </a>
-                        </div>
+                      </div>
                    ';
+          }
+          else{
+            $row[] = '
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="'.site_url("backend/pengujian/detail/".enc_url($get->id)).'" id="detail" class="btn btn-primary" title="'.cclang("detail").'">
+                  <i class="ti-file"></i>
+                </a>
 
+                <a href="'.site_url("backend/pengujian/update/".enc_url($get->id)).'" id="update" class="btn btn-warning" title="'.cclang("upadte").'">
+                  <i class="ti-pencil"></i>
+                </a>
+                <a href="'.site_url("backend/pengujian/delete/".enc_url($get->id)).'" id="delete" class="btn btn-danger" title="'.cclang("delete").'">
+                  <i class="ti-trash"></i>
+                </a>
+              </div>
+         ';
+
+          }
+          
           $data[] = $row;
       }
 
@@ -89,7 +109,7 @@ class Pengujian extends Backend{
               );
       //output to json format
       return $this->response($output);
-    }
+    
   }
 
 

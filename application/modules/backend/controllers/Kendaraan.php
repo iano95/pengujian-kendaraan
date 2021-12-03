@@ -55,8 +55,9 @@ class Kendaraan extends Backend{
       $rows = $this->model->get_datatables($no);
       $data = array();
       foreach ($rows as $get) {
+          $pemohon=$this->db->get_where('tb_pemohon',['no_pendaftaran'=>$get->no_pendaftaran])->row();
           $row = array();
-					$row[] = $get->no_pendaftaran;
+					$row[] = $get->no_pendaftaran." - $pemohon->nama_pemilik";
 					$row[] = $get->no_mesin;
 					$row[] = $get->no_rangka;
 					$row[] = $get->mrk_kendaraan;
@@ -101,8 +102,9 @@ class Kendaraan extends Backend{
     $this->is_allowed('kendaraan_detail');
     if ($row = $this->model->find(dec_url($id))) {
       $this->template->set_title(cclang("detail")." $this->title");
+      $pemohon=$this->db->get_where('tb_pemohon',['no_pendaftaran'=>$row->no_pendaftaran])->row();
       $data = array(
-										'no_pendaftaran' => set_value('no_pendaftaran',$row->no_pendaftaran),
+										'no_pendaftaran' => set_value('no_pendaftaran',$row->no_pendaftaran)." - $pemohon->nama_pemilik",
 										'no_mesin' => set_value('no_mesin',$row->no_mesin),
 										'no_rangka' => set_value('no_rangka',$row->no_rangka),
 										'mrk_kendaraan' => set_value('mrk_kendaraan',$row->mrk_kendaraan),

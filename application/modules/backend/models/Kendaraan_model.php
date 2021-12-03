@@ -12,7 +12,7 @@ class Kendaraan_model extends MY_Model{
   private $table        = "tb_kendaraan";
   private $primary_key  = "id_kendaraan";
   private $column_order = ["no_pendaftaran","no_mesin","no_rangka","mrk_kendaraan","thn_kendaraan","masa_berlaku"];
-  private $order        = ["id_kendaraan"=>"DESC"];
+  private $order        = ["no_pendaftaran"=>"ASC"];
   private $select       = "id_kendaraan,no_pendaftaran,no_mesin,no_rangka,mrk_kendaraan,thn_kendaraan,masa_berlaku";
 
 public function __construct()

@@ -54,7 +54,7 @@
 					</tr>
 
 					<tr>
-						<td>Ban</td>
+						<td>Ukuran Ban</td>
 						<td><?=$ban?></td>
 					</tr>
 

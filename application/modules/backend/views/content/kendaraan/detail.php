@@ -7,7 +7,7 @@
       <div class="card-body">
         <table class="table table-bordered table-striped">
 					<tr>
-						<td>No Pendaftaran</td>
+						<td>No - Pemilik</td>
 						<td><?=$no_pendaftaran?></td>
 					</tr>
 

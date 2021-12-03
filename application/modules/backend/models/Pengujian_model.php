@@ -1,11 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-/* dev : mpampam*/
-/* fb : https://facebook.com/mpampam*/
-/* web : www.mpampam.com*/
-/* Generate By M-CRUD Generator 20/11/2021 17:17*/
-/* Location: ./application/modules/backend/models/Pengujian_model.php*/
-/* Please DO NOT modify this information */
+
 
 class Pengujian_model extends MY_Model{
 
@@ -59,10 +54,16 @@ public function __construct()
     }
 
 
-    public function get_datatables()
+    public function get_datatables($no)
     {
         $this->_get_datatables_query();
+        if ($no) {
+          $this->db->join('tb_kendaraan','tb_kendaraan.id_kendaraan=tb_pengujian.no_kendaraan','LEFT');
+          $this->db->where('tb_kendaraan.no_pendaftaran', $no);
+        }
+        
         if($_POST['length'] != -1)
+
         $this->db->limit($_POST['length'], $_POST['start']);
         $query = $this->db->get();
         return $query->result();
