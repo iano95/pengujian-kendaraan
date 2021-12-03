@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2021 at 04:03 PM
+-- Generation Time: Dec 03, 2021 at 09:41 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -381,9 +381,9 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id_user`, `name`, `email`, `password`, `token`, `last_login`, `ip_address`, `is_active`, `created`, `modified`, `is_delete`) VALUES
-(16, 'Penguji', 'penguji@user.com', '$2y$10$x0QK7PVI3I1dMr.OHWLT9OhmdgvQGvqYWs2BoJQyEtMznKStrgjvi', 'EAD4J0rnVk7cQzbrYDv8g4sSCP8qBMQq', '2021-11-27 22:36:00', '::1', '1', '2021-11-20 18:20:19', NULL, '0'),
-(17, 'Admin', 'admin@gmail.com', '$2y$10$x0QK7PVI3I1dMr.OHWLT9OhmdgvQGvqYWs2BoJQyEtMznKStrgjvi', 'EAD4J0rnVk7cQzbrYDv8g4sSCP8qBMQq', '2021-11-27 22:57:00', '::1', '1', '2021-11-23 17:53:57', NULL, '0'),
-(18, 'Bryand J', 'bryandj@gmail.com', '$2y$10$x0QK7PVI3I1dMr.OHWLT9OhmdgvQGvqYWs2BoJQyEtMznKStrgjvi', 'EAD4J0rnVk7cQzbrYDv8g4sSCP8qBMQq', '2021-11-27 22:35:00', '::1', '1', '2021-11-23 20:03:11', '2021-11-23 20:06:11', '0');
+(16, 'Penguji', 'penguji@user.com', '$2y$10$x0QK7PVI3I1dMr.OHWLT9OhmdgvQGvqYWs2BoJQyEtMznKStrgjvi', 'EAD4J0rnVk7cQzbrYDv8g4sSCP8qBMQq', '2021-12-03 15:46:00', '::1', '1', '2021-11-20 18:20:19', NULL, '0'),
+(17, 'Admin', 'admin@gmail.com', '$2y$10$x0QK7PVI3I1dMr.OHWLT9OhmdgvQGvqYWs2BoJQyEtMznKStrgjvi', 'EAD4J0rnVk7cQzbrYDv8g4sSCP8qBMQq', '2021-12-03 16:31:00', '::1', '1', '2021-11-23 17:53:57', NULL, '0'),
+(18, 'Bryand J', 'bryandj@gmail.com', '$2y$10$x0QK7PVI3I1dMr.OHWLT9OhmdgvQGvqYWs2BoJQyEtMznKStrgjvi', 'EAD4J0rnVk7cQzbrYDv8g4sSCP8qBMQq', '2021-12-03 16:17:00', '::1', '1', '2021-11-23 20:03:11', '2021-11-23 20:06:11', '0');
 
 -- --------------------------------------------------------
 
@@ -608,7 +608,7 @@ INSERT INTO `tb_kendaraan` (`id_kendaraan`, `no_pendaftaran`, `no_mesin`, `no_ra
 (1, '1', '123', '123', 'Honda', '2020', '1', 200, 150, 20, 2, '2021-11-30'),
 (7, '1', '100', '1020', 'Susuki', '2021', '1', 200, 834, 73, 34, '2021-11-25'),
 (8, '1', '123', '123', 'Honda Revo', '2000', '1', 120, 120, 2, 2, '2021-11-23'),
-(9, '3', '123', '123', 'Avanza', '2015', '2', 400, 300, 100, 6, '2021-11-25');
+(9, '3', '627382', '374349', 'Honda', '2020', '2', 120, 10, 100, 12, '2021-12-30');
 
 -- --------------------------------------------------------
 
@@ -685,8 +685,8 @@ CREATE TABLE `tb_pengujian` (
 --
 
 INSERT INTO `tb_pengujian` (`id`, `no_pemeriksaan`, `tgl_pemeriksaan`, `no_kendaraan`, `peralatan`, `penerangan`, `kemudi`, `suspensi`, `ban`, `rangka`, `rem`, `keterangan`) VALUES
-(1, 1, '2021-11-11', 1, 'lengkap', 'baik', 'baik', 'baik', 'botak', 'kokoh', 'blong', 'Tidak Lulus'),
-(2, 123, '2021-11-27', 9, 'Lengkap', 'Lengkap', 'Baik', 'Baik', 'Baik', 'Baik', 'Baik', 'Lulus');
+(1, 1, '2021-11-11', 1, 'lengkap', 'baik', 'baik', 'baik', '18', 'kokoh', 'blong', 'Tidak Lulus'),
+(2, 123, '2021-11-27', 9, 'Lengkap', 'Lengkap', 'Baik', 'Baik', '6', 'Baik', 'Baik', 'Lulus');
 
 -- --------------------------------------------------------
 
@@ -854,7 +854,7 @@ ALTER TABLE `tb_karyawan`
 -- AUTO_INCREMENT for table `tb_kendaraan`
 --
 ALTER TABLE `tb_kendaraan`
-  MODIFY `id_kendaraan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_kendaraan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_pembayaran`
@@ -872,7 +872,7 @@ ALTER TABLE `tb_pemohon`
 -- AUTO_INCREMENT for table `tb_pengujian`
 --
 ALTER TABLE `tb_pengujian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_tarif`
