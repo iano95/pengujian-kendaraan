@@ -1,6 +1,6 @@
 #Pengujian Kendaraan
 
-https://localhost/pengujian-kendaraan/backend/login
+https://localhost/pengujiankendaraan/backend/login
 <br>
 akses login admin<br>
 email : admin@gmail.com<br>
